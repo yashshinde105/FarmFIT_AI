@@ -189,8 +189,14 @@ const Login = () => {
       const data = await response.json().catch(() => null);
       if (!response.ok) throw new Error(data?.message || "Failed to login");
 
-      console.log("Login success:", data);
-      window.location.assign("/"); // redirect
+      toast({
+        title: "Login Successful!",
+        description: "Welcome back to FarmFit AI!",
+        variant: "success",
+      });
+      setTimeout(() => {
+        window.location.assign("/");
+      }, 1200);
     } catch (err) {
       setErrorMessage(err.message || "Something went wrong. Try again.");
       setIsLoading(false);
@@ -224,8 +230,14 @@ const Login = () => {
       const data = await response.json().catch(() => null);
       if (!response.ok) throw new Error(data?.message || "Failed to signup");
 
-      console.log("Signup success:", data);
-      window.location.assign("/");
+      toast({
+        title: "Signup Successful!",
+        description: "Your account has been created. Please login.",
+        variant: "success",
+      });
+      setTimeout(() => {
+        window.location.assign("/");
+      }, 1200);
     } catch (err) {
       setErrorMessage(err.message || "Something went wrong. Try again.");
       setIsLoading(false);
